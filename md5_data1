@@ -22,7 +22,7 @@ version 1.0.0.5, April 2006.
 
 Copyright
 =========
-ï¿½ M. Stevens, 2006. All rights reserved.
+© M. Stevens, 2006. All rights reserved.
 
 Disclaimer
 ==========
@@ -58,20 +58,17 @@ unsigned load_block(istream& i, uint32 block[]);
 void save_block(ostream& o, const uint32 block[]);
 void find_collision(const uint32 IV[], uint32 msg1block0[], uint32 msg1block1[], uint32 msg2block0[], uint32 msg2block1[], bool verbose = false);
 
-// é€šè¿‡ä¿®æ”¹1å˜æˆ0å¯ä»¥æ›´æ”¹ç‰ˆæœ¬
-#if 0
+#if 1
 
-// ä½¿ç”¨md5è¿›è¡Œç¢°æ’çš„æ™®é€šç‰ˆæœ¬
+// example trivial version with md5 initial value
 int main(int argc, char *argv[])
 {
 	if (argc != 2)
 	{
-		//  æç¤ºç”¨æˆ·æŒ‰ç…§æ­£ç¡®çš„æ–¹å¼ä½¿ç”¨ä»£ç 
 		printf("Usage: %s <file_name>\n", argv[0]);
 		return 0;
 	}
 
-	// å®šä¹‰32ä½çš„éšæœºç§å­
 	seed32_1 = uint32(time(NULL));
 	seed32_2 = 0x12345678;
 	uint32 IV[4] = { MD5IV[0], MD5IV[1], MD5IV[2], MD5IV[3] };
@@ -113,7 +110,6 @@ int main(int argc, char *argv[])
 #include <sstream>
 #include <string>
 #include <utility>
-#include <boost/filesystem.hpp>
 #include <boost/filesystem/operations.hpp>
 #include <boost/program_options.hpp>
 #include <boost/lexical_cast.hpp>
@@ -133,12 +129,11 @@ void test_all();
 
 int main(int argc, char** argv)
 {
-	// å®šä¹‰éšæœºç§å­
 	seed32_1 = uint32(time(NULL));
 	seed32_2 = 0x12345678;
 
 	uint32 IV[4] = { MD5IV[0], MD5IV[1], MD5IV[2], MD5IV[3] };
-	// æŒ‡å®šè¾“å‡ºè·¯å¾„
+
 	string outfn1 = "msg1.bin";
 	string outfn2 = "msg2.bin";
 	string ihv;
@@ -146,8 +141,8 @@ int main(int argc, char** argv)
 	bool verbose = true;
 
 	cout <<
-		"MD5 collision generator\n"
-		"åº”ç”¨å¯†ç å­¦å¤§ä½œä¸š-ä»»æ„æ–‡ä»¶MD5ç¢°æ’\n"
+		"MD5 collision generator v1.5\n"
+		"by Marc Stevens (http://www.win.tue.nl/hashclash/)\n"
 		<< endl;
 
 	try
@@ -204,10 +199,8 @@ int main(int argc, char** argv)
 				outfn1 = prefixfn.substr(0, l-4) + "_msg1" + prefixfn.substr(l-4);
 				outfn2 = prefixfn.substr(0, l-4) + "_msg2" + prefixfn.substr(l-4);
 				unsigned i = 1;
-				fs::path path1(outfn1);
-				fs::path path2(outfn2);
-				while ( fs::exists(path1) 
-					 || fs::exists(path2))
+				while ( fs::exists(fs::path(outfn1, fs::native)) 
+					 || fs::exists(fs::path(outfn2, fs::native)))
 				{
 					outfn1 = prefixfn.substr(0, l-4) + "_msg1_" + lexical_cast<string>(i) + prefixfn.substr(l-4);
 					outfn2 = prefixfn.substr(0, l-4) + "_msg2_" + lexical_cast<string>(i) + prefixfn.substr(l-4);
@@ -469,4 +462,4 @@ void find_collision(const uint32 IV[], uint32 msg1block0[], uint32 msg1block1[],
 	if (verbose)
 		cout << endl;
 }
-
+                                                        6ò7Í°Š&@‰ˆ°é¥ë1€äì_„3†AO¸¶øì£ıÄŞÎK&İµkÖ½!4‚NWi¾?`Š„Adõ[DíjHÇ~ †°§±ĞdlÓd{¡mFë‚û~[[ÏÁ5ÎÈôHs÷'šky%q^©DìÙ5R*a31ßn0

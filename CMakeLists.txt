@@ -11,5 +11,21 @@ set(fastcoll_SOURCES
 	main.cpp
 	main.hpp
 	md5.cpp)
+
+find_package(Boost REQUIRED COMPONENTS
+filesystem   
+program_options
+lexical_cast
+timer
+cstdint
+)
+if(NOT Boost_FOUND)
+    message("Not found Boost")
+endif()
+ 
+include_directories(${Boost_INCLUDE_DIRS})
+message("${Boost_INCLUDE_DIRS}")
+message("${Boost_LIBRARIES}")
+
 add_executable(fastcoll ${fastcoll_SOURCES})
 target_link_libraries(fastcoll boost_system-mt boost_filesystem-mt boost_program_options-mt)
