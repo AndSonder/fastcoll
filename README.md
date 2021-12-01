@@ -2,7 +2,6 @@
 
 [TOC]
 
-本仓库源代码来自：http://www.win.tue.nl/hashclash/
 
 本仓库主要贡献如下：
 1. fastcoll初代代码版本过于久远，编译过程会报错
