@@ -1,0 +1,7 @@
+{
+	"files.associations": {
+		"chrono": "cpp",
+		"type_traits": "cpp",
+		"filesystem": "cpp"
+	}
+}
